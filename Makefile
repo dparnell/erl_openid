@@ -1,15 +1,16 @@
 ERL ?= erl
 APP := openid
+DEPS_DIR ?= deps
 
 .PHONY: deps
 .PHONY: test
 .PHONY: mod
 
 all: deps
-	@./rebar compile
+	@./rebar deps_dir=$(DEPS_DIR) compile
 
 deps:
-	@./rebar get-deps
+	@./rebar deps_dir=$(DEPS_DIR) get-deps
 
 clean:
 	@./rebar clean
